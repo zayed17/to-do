@@ -10,10 +10,12 @@ function App() {
   const storedItems: items[] = JSON.parse(
     localStorage.getItem("items") ?? "[]"
   );
+
+  
+
   const [item, setitem] = useState<items[]>(storedItems);
 
   const [inputvalue, setinputvalue] = useState<string>("");
-
 
   const handlesubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -33,8 +35,8 @@ function App() {
     item.forEach((data) => {
       localStorage.setItem(data.id, JSON.stringify(data));
     });
+    localStorage.setItem("items", JSON.stringify(item)); 
   }, [item]);
-
   return (
     <>
       <h1 className="heading">To-Do List</h1>
